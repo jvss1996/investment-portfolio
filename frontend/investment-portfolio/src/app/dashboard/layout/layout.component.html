@@ -1,0 +1,33 @@
+<div class="layout-container">
+    <!-- Top Header -->
+    <header class="layout-header">
+      <div class="logo">
+        <img src="assets/logo.png" alt="Logo" />
+        <span>{{ userName }}'s Portfolio</span>
+      </div>
+      <div class="user-menu">
+        <mat-icon>account_circle</mat-icon>
+        <mat-menu>
+          <button mat-menu-item (click)="onLogout()">Logout</button>
+        </mat-menu>
+      </div>
+    </header>
+  
+    <!-- Left Side Navbar -->
+    <nav class="layout-nav">
+      <ul>
+        <li>
+          <a routerLink="/dashboard/dashboard">Dashboard</a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/transactions">Transactions</a>
+        </li>
+      </ul>
+    </nav>
+  
+    <!-- Router Outlet to Load Content -->
+    <div class="layout-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  

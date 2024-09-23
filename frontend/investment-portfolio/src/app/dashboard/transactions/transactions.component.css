@@ -1,0 +1,15 @@
+.transactions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .transactions-table {
+    width: 100%;
+  }
+  
+  mat-header-cell {
+    font-weight: bold;
+  }
+  

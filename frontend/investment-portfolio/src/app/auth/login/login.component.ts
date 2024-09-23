@@ -24,6 +24,7 @@ export class LoginComponent {
         next: (response) => {
           console.log('Login successful, response: ', response);
           localStorage.setItem('userId', response.id);
+          localStorage.setItem('username', response.username);
           this.router.navigate(['/dashboard']);
         },
         error: (err) => {
