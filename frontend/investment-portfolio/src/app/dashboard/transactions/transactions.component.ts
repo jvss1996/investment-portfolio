@@ -12,7 +12,7 @@ import { AddTransactionDialogComponent } from '../add-transaction-dialog/add-tra
 })
 export class TransactionsComponent {
   transactions = new MatTableDataSource<any>([]);
-  displayedColumns: string[] = ['name', 'amount', 'date'];
+  displayedColumns: string[] = ['name', 'type', 'quantity', 'amount', 'date'];
   newTransaction: any = {type: '', name: '', amount: 0, quantity: 0, date: new Date()};
 
   constructor(private dashboardService: DashboardService, private router: Router, private dialog: MatDialog) { }
@@ -38,14 +38,13 @@ export class TransactionsComponent {
     }
   }
 
-  onAddTransaction() {
+  onAddTransaction(transaction: any) {
     const userId = localStorage.getItem('userId');
     if (userId) {
-      this.newTransaction.user = { id: +userId };
-      this.dashboardService.addTransaction(this.newTransaction).subscribe({
+      transaction.user = { id: +userId };
+      this.dashboardService.addTransaction(transaction).subscribe({
         next: (response) => {
-          this.newTransaction = {type: '', name: '', amount: 0, quantity: 0, date: new Date()};
-          this.loadTransactions();
+          console.log('Transaction added successfully: ', response);
         },
         error: (err) => {
           console.error('Error adding transaction: ', err);
@@ -66,6 +65,7 @@ export class TransactionsComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.transactions.data = [...this.transactions.data, result];
+        this.onAddTransaction(result);
       }
     });
   }

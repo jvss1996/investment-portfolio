@@ -16,8 +16,10 @@ export class AddTransactionDialogComponent {
     private fb: FormBuilder
   ) {
     this.transactionForm = this.fb.group({
+      type: ['', Validators.required],
       name: ['', Validators.required],
       amount: ['', Validators.required],
+      quantity: ['', Validators.required],
       date: ['', Validators.required]
     });
   }

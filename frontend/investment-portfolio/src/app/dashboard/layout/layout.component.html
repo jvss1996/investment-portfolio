@@ -5,11 +5,13 @@
         <img src="assets/logo.png" alt="Logo" />
         <span>{{ userName }}'s Portfolio</span>
       </div>
-      <div class="user-menu">
+      <div class="user-menu" (click)="toggleDropdown()">
         <mat-icon>account_circle</mat-icon>
-        <mat-menu>
-          <button mat-menu-item (click)="onLogout()">Logout</button>
-        </mat-menu>
+        <div class="dropdown-menu" *ngIf="showDropdown">
+          <ul>
+            <li (click)="onLogout()">Logout</li>
+          </ul>
+        </div>
       </div>
     </header>
   

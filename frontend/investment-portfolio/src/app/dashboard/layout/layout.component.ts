@@ -8,12 +8,17 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent implements OnInit {
   userName: string = '';
+  showDropdown = false;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     console.log('username: ', localStorage.getItem('username'));
     this.userName = localStorage.getItem('username') || '';
+  }
+
+  toggleDropdown() {
+    this.showDropdown = !this.showDropdown;
   }
 
   onLogout() {
